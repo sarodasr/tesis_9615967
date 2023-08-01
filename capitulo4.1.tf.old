@@ -1,0 +1,25 @@
+resource "aws_db_instance" "capitulo4_ejemplo01" {
+  #...
+  password = var.clave_base_de_datos
+  #...
+}
+
+terraform {
+  backend "s3" {
+    bucket = "bucket-estado-terraform"
+    region = "us-east-1"
+    key = "terraform.tfstate"
+  }
+}
+
+data "aws_secretsmanager_secret_version" "ejemplo-secreto" {
+  secret_id = "secreto-prueba"
+}
+
+resource "aws_instance" "ejemplo-secreto-implementado" {
+  #....
+  tags = {
+    Secreto = data.aws_secretsmanager_secret_version.ejemplo-secreto.secret_string
+  }
+  #....
+}
