@@ -10,9 +10,9 @@ terraform {
 
 # Configuración de proveedor específico, que es AWS
 provider "aws" {
-  access_key = "AKIA45UF4WHJ5DCOFBFM"
-  secret_key = "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"
-  region     = "us-east-1"
+  access_key = "SU_ACCESO"
+  secret_key = "SU_LLAVE_SECRETA"
+  region     = "SU_REGION"
 }
 
 # Instancia general
